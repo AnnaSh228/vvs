@@ -52,5 +52,14 @@ namespace vvs
         {
             return instance + number;
         }
+        public static Length operator -(Length instance, double number)
+        {
+            return new Length(instance.value - number, instance.type); ;
+        }
+
+        public static Length operator -(double number, Length instance)
+        {
+            return instance - number;
+        }
     }
 }

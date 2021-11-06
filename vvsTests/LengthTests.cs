@@ -31,9 +31,16 @@ namespace vvs.Tests
         [TestMethod()]
         public void AddNumberTest()
         {
-            var length = new Length(1, MeasureType.m);
+            var length = new Length(1, MeasureType.C);
             length = length + 4.25;
             Assert.AreEqual("5.25 м.", length.Verbose());
+        }
+        [TestMethod()]
+        public void SubNumberTest()
+        {
+            var length = new Length(3, MeasureType.C);
+            length = length - 1.75;
+            Assert.AreEqual("1.25 м.", length.Verbose());
         }
     }
 }
