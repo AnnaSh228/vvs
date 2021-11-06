@@ -61,5 +61,57 @@ namespace vvs
         {
             return instance - number;
         }
+        public Length To(MeasureType newType)
+        {
+            var newValue = this.value;
+         
+            if (this.type == MeasureType.C)
+            {
+               
+                switch (newType)
+                {
+                  
+                    case MeasureType.C:
+                        newValue = this.value;
+                        break;
+
+                    case MeasureType.F:
+                        newValue = this.value * 32;
+                        break;
+               
+                    case MeasureType.Ra:
+                        newValue = this.value * 491.67;
+                        break;
+                    
+                    case MeasureType.K:
+                        newValue = this.value * 273.15;
+                        break;
+                }
+            }
+            else if(newType == MeasureType.C)
+            {
+                switch (this.type) 
+                {
+                    case MeasureType.C:
+                        newValue = this.value;
+                        break;
+                    case MeasureType.F:
+                        newValue = this.value / 32; 
+                        break;
+                    case MeasureType.Ra:
+                        newValue = this.value / 491.67; 
+                        break;
+                    case MeasureType.K:
+                        newValue = this.value / 273.15; 
+                        break;
+                }
+            
+            }
+            else
+            {
+                newValue = this.To(MeasureType.C).To(newType).value;
+            }
+            return new Length(newValue, newType);
+        }
     }
 }

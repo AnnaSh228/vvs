@@ -33,14 +33,37 @@ namespace vvs.Tests
         {
             var length = new Length(1, MeasureType.C);
             length = length + 4.25;
-            Assert.AreEqual("5.25 м.", length.Verbose());
+            Assert.AreEqual("5,25 градус Цельсия", length.Verbose());
         }
         [TestMethod()]
         public void SubNumberTest()
         {
             var length = new Length(3, MeasureType.C);
             length = length - 1.75;
-            Assert.AreEqual("1.25 м.", length.Verbose());
+            Assert.AreEqual("1,25 градус Цельсия", length.Verbose());
+        }
+        [TestMethod()]
+        public void MeterToAnyTest()
+        {
+            Length length;
+
+            length = new Length(1, MeasureType.C);
+            Assert.AreEqual("32 градус Фаренгейта", length.To(MeasureType.F).Verbose());
+
+            length = new Length(1, MeasureType.C);
+            Assert.AreEqual("491,67 градус Ранкина", length.To(MeasureType.Ra).Verbose());
+
+            length = new Length(1, MeasureType.C);
+            Assert.AreEqual("273,15 Кельвинов", length.To(MeasureType.K).Verbose());
+
+            length = new Length(32, MeasureType.F);
+            Assert.AreEqual("1 градус Цельсия", length.To(MeasureType.C).Verbose());
+
+            length = new Length(491.67, MeasureType.Ra);
+            Assert.AreEqual("1 градус Цельсия", length.To(MeasureType.C).Verbose());
+
+            length = new Length(273.15, MeasureType.K);
+            Assert.AreEqual("1 градус Цельсия", length.To(MeasureType.C).Verbose());
         }
     }
 }
