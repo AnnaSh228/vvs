@@ -16,29 +16,34 @@ namespace vvs
         {
             InitializeComponent();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void Calculate()
         {
             try
             {
-
                 var firstValue = double.Parse(txtFirst.Text);
                 var secondValue = double.Parse(txtSecond.Text);
-
 
                 var firstLength = new Length(firstValue, MeasureType.C);
                 var secondLength = new Length(secondValue, MeasureType.C);
 
-
                 var sumLength = firstLength + secondLength;
 
-                
                 txtResult.Text = sumLength.Verbose();
             }
             catch (FormatException)
             {
-                
+            
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        private void txtSecond_TextChanged(object sender, EventArgs e)
+        {
+            Calculate();
         }
     }
 }

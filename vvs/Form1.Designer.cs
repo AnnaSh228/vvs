@@ -57,6 +57,7 @@ namespace vvs
             this.txtSecond.Name = "txtSecond";
             this.txtSecond.Size = new System.Drawing.Size(121, 22);
             this.txtSecond.TabIndex = 2;
+            this.txtSecond.TextChanged += new System.EventHandler(this.txtSecond_TextChanged);
             // 
             // txtResult
             // 
