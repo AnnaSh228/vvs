@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace vvs
 {
+    public enum MeasureType { C, F, Ra, K };
     public class Length
     {
         private double value;
-        private string type;
+        private MeasureType type;
 
-        public Length(double value, string type)
+
+        public Length(double value, MeasureType type)
         {
             this.value = value;
             this.type = type;
@@ -19,8 +21,25 @@ namespace vvs
 
        
         public string Verbose()
+
         {
-            return String.Format("{0} {1}", this.value, this.type);
+            string typeVerbose = "";
+            switch (this.type)
+            {
+                case MeasureType.C:
+                    typeVerbose = "градус Цельсия";
+                    break;
+                case MeasureType.F:
+                    typeVerbose = "градус Фаренгейта";
+                    break;
+                case MeasureType.Ra:
+                    typeVerbose = "градус Ранкина";
+                    break;
+                case MeasureType.K:
+                    typeVerbose = "Кельвинов";
+                    break;
+            }
+            return String.Format("{0} {1}", this.value, typeVerbose);
         }
     }
 }
