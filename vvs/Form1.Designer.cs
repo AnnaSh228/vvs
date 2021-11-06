@@ -33,6 +33,9 @@ namespace vvs
             this.txtFirst = new System.Windows.Forms.TextBox();
             this.txtSecond = new System.Windows.Forms.TextBox();
             this.txtResult = new System.Windows.Forms.TextBox();
+            this.cmbFirstType = new System.Windows.Forms.ComboBox();
+            this.cmbSecondType = new System.Windows.Forms.ComboBox();
+            this.cmbResultType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cmbOperation
@@ -71,11 +74,41 @@ namespace vvs
             this.txtResult.Size = new System.Drawing.Size(209, 22);
             this.txtResult.TabIndex = 3;
             // 
+            // cmbFirstType
+            // 
+            this.cmbFirstType.FormattingEnabled = true;
+            this.cmbFirstType.Location = new System.Drawing.Point(273, 21);
+            this.cmbFirstType.Name = "cmbFirstType";
+            this.cmbFirstType.Size = new System.Drawing.Size(164, 24);
+            this.cmbFirstType.TabIndex = 4;
+            this.cmbFirstType.SelectedIndexChanged += new System.EventHandler(this.cmbFirstType_SelectedIndexChanged);
+            // 
+            // cmbSecondType
+            // 
+            this.cmbSecondType.FormattingEnabled = true;
+            this.cmbSecondType.Location = new System.Drawing.Point(273, 56);
+            this.cmbSecondType.Name = "cmbSecondType";
+            this.cmbSecondType.Size = new System.Drawing.Size(164, 24);
+            this.cmbSecondType.TabIndex = 5;
+            this.cmbSecondType.SelectedIndexChanged += new System.EventHandler(this.cmbSecondType_SelectedIndexChanged);
+            // 
+            // cmbResultType
+            // 
+            this.cmbResultType.FormattingEnabled = true;
+            this.cmbResultType.Location = new System.Drawing.Point(273, 95);
+            this.cmbResultType.Name = "cmbResultType";
+            this.cmbResultType.Size = new System.Drawing.Size(164, 24);
+            this.cmbResultType.TabIndex = 6;
+            this.cmbResultType.SelectedIndexChanged += new System.EventHandler(this.cmbResultType_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbResultType);
+            this.Controls.Add(this.cmbSecondType);
+            this.Controls.Add(this.cmbFirstType);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.txtSecond);
             this.Controls.Add(this.txtFirst);
@@ -93,6 +126,9 @@ namespace vvs
         private System.Windows.Forms.TextBox txtFirst;
         private System.Windows.Forms.TextBox txtSecond;
         private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.ComboBox cmbFirstType;
+        private System.Windows.Forms.ComboBox cmbSecondType;
+        private System.Windows.Forms.ComboBox cmbResultType;
     }
 }
 
