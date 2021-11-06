@@ -25,8 +25,23 @@ namespace vvs
 
                 var firstLength = new Length(firstValue, MeasureType.C);
                 var secondLength = new Length(secondValue, MeasureType.C);
-
-                var sumLength = firstLength + secondLength;
+                Length sumLength;
+                switch (cmbOperation.Text)
+                {
+                    case "+":
+                        
+                        sumLength = firstLength + secondLength;
+                        break;
+                    case "-":
+                      
+                        sumLength = firstLength - secondLength;
+                        break;
+                    default:
+                        
+                        sumLength = new Length(0, MeasureType.C);
+                        break;
+                }
+                
 
                 txtResult.Text = sumLength.Verbose();
             }
@@ -42,6 +57,11 @@ namespace vvs
         }
 
         private void txtSecond_TextChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        private void cmbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
             Calculate();
         }
