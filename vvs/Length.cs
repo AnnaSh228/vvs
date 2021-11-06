@@ -41,5 +41,16 @@ namespace vvs
             }
             return String.Format("{0} {1}", this.value, typeVerbose);
         }
+        public static Length operator +(Length instance, double number)
+        {
+            var newValue = instance.value + number;
+            var length = new Length(newValue, instance.type);
+            return length;
+        }
+
+        public static Length operator +(double number, Length instance)
+        {
+            return instance + number;
+        }
     }
 }

@@ -28,5 +28,12 @@ namespace vvs.Tests
             length = new Length(38, MeasureType.K);
             Assert.AreEqual("38 Кельвинов", length.Verbose());
         }
+        [TestMethod()]
+        public void AddNumberTest()
+        {
+            var length = new Length(1, MeasureType.m);
+            length = length + 4.25;
+            Assert.AreEqual("5.25 м.", length.Verbose());
+        }
     }
 }
