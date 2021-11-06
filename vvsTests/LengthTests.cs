@@ -65,5 +65,17 @@ namespace vvs.Tests
             length = new Length(273.15, MeasureType.K);
             Assert.AreEqual("1 градус Цельсия", length.To(MeasureType.C).Verbose());
         }
+        [TestMethod()]
+        public void AddSubFCTest()
+        {
+            var C = new Length(1, MeasureType.C);
+            var F = new Length(32, MeasureType.F);
+
+            Assert.AreEqual("2 градус Цельсия", (C + F).Verbose());
+            Assert.AreEqual("64 градус Фаренгейта", (F + C).Verbose());
+
+            Assert.AreEqual("0 градус Фаренгейта", (F - C).Verbose());
+            Assert.AreEqual("0 градус Цельсия", (C - F).Verbose());
+        }
     }
 }

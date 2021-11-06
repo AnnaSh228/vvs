@@ -113,5 +113,17 @@ namespace vvs
             }
             return new Length(newValue, newType);
         }
+        public static Length operator +(Length instance1, Length instance2)
+        {
+           
+            return instance1 + instance2.To(instance1.type).value;
+        }
+
+        
+        public static Length operator -(Length instance1, Length instance2)
+        {
+        
+            return instance1 - instance2.To(instance1.type).value;
+        }
     }
 }
