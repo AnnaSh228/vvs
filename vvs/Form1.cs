@@ -91,19 +91,22 @@ namespace vvs
 
 
                 txtResult.Text = sumLength.To(resultType).Verbose();
-                txtKfFirst.Text = kfLength1.To(resultType).Verbose();
-                txtKfSecond.Text = kfLength2.To(resultType).Verbose();
+                txtKfFirst.Text = kfLength1.To(firstType).Verbose();
+                txtKfSecond.Text = kfLength2.To(secondType).Verbose();
             }
             catch (FormatException)
             {
             
             }
         }
-
+       
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             this.txtFirst.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             Calculate();
+
+            txtFirst.BackColor = Color.White;
+            txtSecond.BackColor = Color.White;
             if (txtFirst.Text != "" && txtSecond.Text != "")
             {
                 if (Int32.Parse(txtFirst.Text) > Int32.Parse(txtSecond.Text))
@@ -117,6 +120,9 @@ namespace vvs
         {
             this.txtKfSecond.TextChanged += new System.EventHandler(this.txtSecond_TextChanged);
             Calculate();
+            txtFirst.BackColor = Color.White;
+            txtSecond.BackColor = Color.White;
+            
             if (txtFirst.Text != "" && txtSecond.Text != "")
             {
                 if (Int32.Parse(txtFirst.Text) < Int32.Parse(txtSecond.Text))
@@ -148,6 +154,11 @@ namespace vvs
         private void txtKfFirst_TextChanged(object sender, EventArgs e)
         {
             Calculate();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
