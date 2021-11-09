@@ -46,7 +46,8 @@ namespace vvs
             this.cmbOperation.FormattingEnabled = true;
             this.cmbOperation.Items.AddRange(new object[] {
             "+",
-            "-"});
+            "-",
+            "*"});
             this.cmbOperation.Location = new System.Drawing.Point(39, 30);
             this.cmbOperation.Name = "cmbOperation";
             this.cmbOperation.Size = new System.Drawing.Size(69, 24);
@@ -64,7 +65,7 @@ namespace vvs
             // 
             // txtSecond
             // 
-            this.txtSecond.Location = new System.Drawing.Point(141, 67);
+            this.txtSecond.Location = new System.Drawing.Point(141, 65);
             this.txtSecond.Name = "txtSecond";
             this.txtSecond.Size = new System.Drawing.Size(121, 22);
             this.txtSecond.TabIndex = 2;
@@ -113,14 +114,15 @@ namespace vvs
             // 
             // txtKfFirst
             // 
-            this.txtKfFirst.Location = new System.Drawing.Point(463, 30);
+            this.txtKfFirst.Location = new System.Drawing.Point(454, 30);
             this.txtKfFirst.Name = "txtKfFirst";
             this.txtKfFirst.Size = new System.Drawing.Size(114, 22);
             this.txtKfFirst.TabIndex = 8;
+            this.txtKfFirst.TextChanged += new System.EventHandler(this.txtKfFirst_TextChanged);
             // 
             // txtKfSecond
             // 
-            this.txtKfSecond.Location = new System.Drawing.Point(463, 65);
+            this.txtKfSecond.Location = new System.Drawing.Point(454, 65);
             this.txtKfSecond.Name = "txtKfSecond";
             this.txtKfSecond.Size = new System.Drawing.Size(114, 22);
             this.txtKfSecond.TabIndex = 9;
@@ -130,7 +132,7 @@ namespace vvs
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaShell;
-            this.ClientSize = new System.Drawing.Size(589, 175);
+            this.ClientSize = new System.Drawing.Size(749, 175);
             this.Controls.Add(this.txtKfSecond);
             this.Controls.Add(this.txtKfFirst);
             this.Controls.Add(this.txtKf);

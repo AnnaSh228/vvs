@@ -57,13 +57,15 @@ namespace vvs
             {
                 var firstValue = double.Parse(txtFirst.Text);
                 var secondValue = double.Parse(txtSecond.Text);
+                
                 MeasureType firstType = GetMeasureType(cmbFirstType);
                 MeasureType secondType = GetMeasureType(cmbSecondType);
                 MeasureType resultType = GetMeasureType(cmbResultType);
                 var firstLength = new Length(firstValue, firstType);
                 var secondLength = new Length(secondValue, secondType);
-
+                
                 Length sumLength;
+                
                 switch (cmbOperation.Text)
                 {
                     case "+":
@@ -74,6 +76,7 @@ namespace vvs
                       
                         sumLength = firstLength - secondLength;
                         break;
+                   
                     default:
                         
                         sumLength = new Length(0, MeasureType.C);
@@ -82,6 +85,7 @@ namespace vvs
 
 
                 txtResult.Text = sumLength.To(resultType).Verbose();
+              
             }
             catch (FormatException)
             {
@@ -91,12 +95,27 @@ namespace vvs
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            this.txtFirst.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             Calculate();
+            if (txtFirst.Text != "" && txtSecond.Text != "")
+            {
+                if (Int32.Parse(txtFirst.Text) > Int32.Parse(txtSecond.Text))
+                    txtFirst.BackColor = Color.Coral;
+                txtSecond.BackColor = Color.White;
+            }
+      
         }
 
         private void txtSecond_TextChanged(object sender, EventArgs e)
         {
+            this.txtKfSecond.TextChanged += new System.EventHandler(this.txtSecond_TextChanged);
             Calculate();
+            if (txtFirst.Text != "" && txtSecond.Text != "")
+            {
+                if (Int32.Parse(txtFirst.Text) < Int32.Parse(txtSecond.Text))
+                    txtSecond.BackColor = Color.Coral;
+                txtFirst.BackColor = Color.White;
+            }
         }
 
         private void cmbOperation_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,6 +134,11 @@ namespace vvs
         }
 
         private void cmbResultType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        private void txtKfFirst_TextChanged(object sender, EventArgs e)
         {
             Calculate();
         }
