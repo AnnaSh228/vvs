@@ -57,24 +57,30 @@ namespace vvs
             {
                 var firstValue = double.Parse(txtFirst.Text);
                 var secondValue = double.Parse(txtSecond.Text);
-                
+                var kfValue = double.Parse(txtKf.Text);
                 MeasureType firstType = GetMeasureType(cmbFirstType);
                 MeasureType secondType = GetMeasureType(cmbSecondType);
                 MeasureType resultType = GetMeasureType(cmbResultType);
                 var firstLength = new Length(firstValue, firstType);
                 var secondLength = new Length(secondValue, secondType);
-                
+                var kfLength1 = new Length(firstValue, firstType);
+                var kfLength2= new Length(secondValue, secondType);
                 Length sumLength;
-                
+             
+
                 switch (cmbOperation.Text)
                 {
                     case "+":
                         
                         sumLength = firstLength + secondLength;
+                        kfLength1 = kfValue * kfLength1;
+                        kfLength2 = kfValue * kfLength2;
                         break;
                     case "-":
                       
                         sumLength = firstLength - secondLength;
+                        kfLength1 = kfValue * kfLength1;
+                        kfLength2 = kfValue * kfLength2;
                         break;
                    
                     default:
@@ -85,7 +91,8 @@ namespace vvs
 
 
                 txtResult.Text = sumLength.To(resultType).Verbose();
-              
+                txtKfFirst.Text = kfLength1.To(resultType).Verbose();
+                txtKfSecond.Text = kfLength2.To(resultType).Verbose();
             }
             catch (FormatException)
             {

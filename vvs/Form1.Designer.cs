@@ -46,8 +46,7 @@ namespace vvs
             this.cmbOperation.FormattingEnabled = true;
             this.cmbOperation.Items.AddRange(new object[] {
             "+",
-            "-",
-            "*"});
+            "-"});
             this.cmbOperation.Location = new System.Drawing.Point(39, 30);
             this.cmbOperation.Name = "cmbOperation";
             this.cmbOperation.Size = new System.Drawing.Size(69, 24);
